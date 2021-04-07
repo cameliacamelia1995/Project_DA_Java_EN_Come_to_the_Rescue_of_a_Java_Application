@@ -1,47 +1,35 @@
 package com.hemebiotech.analytics;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.TreeMap;
 
-/**
- * Simple brute force implementation
- *
- */
-public class ReadSymptomDataFromFile implements ISymptomReader {
+public class ReadSymptomDataFromFile {
+    private TreeMap<String, Integer> mape;
 
-	private String filepath;
-	
-	/**
-	 * 
-	 * @param filepath a full or partial path to file with symptom strings in it, one per line
-	 */
-	public ReadSymptomDataFromFile (String filepath) {
-		this.filepath = filepath;
-	}
-	
-	@Override
-	public List<String> GetSymptoms() {
-		ArrayList<String> result = new ArrayList<String>();
-		
-		if (filepath != null) {
-			try {
-				BufferedReader reader = new BufferedReader (new FileReader(filepath));
-				String line = reader.readLine();
-				
-				while (line != null) {
-					result.add(line);
-					line = reader.readLine();
-				}
-				reader.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-		
-		return result;
-	}
+    // first get input
+    public void ReadSymptom(File file) throws Exception {
 
+        BufferedReader reader = new BufferedReader(new FileReader(file));
+        this.mape = new TreeMap<>();
+
+        String line;
+        while ((line = reader.readLine()) != null) {
+            if (this.mape.get(line) == null) {
+                this.mape.put(line, 1);
+            } else {
+                int occurence = this.mape.get(line);
+                occurence++;
+                this.mape.put(line, occurence);
+            }
+        }
+        reader.close();
+        System.out.println(this.mape);
+    }
+
+    // Crée un getter pour utiliser map dans une autre classe
+    public TreeMap<String, Integer> getMyMap() {
+        return this.mape;
+    }
 }
