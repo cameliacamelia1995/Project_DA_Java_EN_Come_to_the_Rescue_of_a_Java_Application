@@ -27,8 +27,7 @@ public class ReadSymptomDataFromFile {
         reader.close();
         System.out.println(this.mape);
     }
-
-    // Crée un getter pour utiliser map dans une autre classe
+    // Cree un getter pour utilise map dans une autre classe
     public TreeMap<String, Integer> getMyMap() {
         return this.mape;
     }
