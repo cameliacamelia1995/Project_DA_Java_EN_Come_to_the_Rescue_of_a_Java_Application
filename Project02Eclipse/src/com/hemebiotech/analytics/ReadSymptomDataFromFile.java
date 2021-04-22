@@ -4,31 +4,43 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.util.TreeMap;
-
+/**
+ * @author camelia
+ * The ReadSymptom class allows to read the symptoms file
+ *
+ */
 public class ReadSymptomDataFromFile {
-    private TreeMap<String, Integer> mape;
+    /**
+     * Tree Map allows to sort the symptoms file
+     */
+    private TreeMap<String, Integer> symptoms;
+    /**
+     *
+     * @param file : file that will be read
+     * @throws Exception
+     */
 
-    // first get input
     public void ReadSymptom(File file) throws Exception {
 
         BufferedReader reader = new BufferedReader(new FileReader(file));
-        this.mape = new TreeMap<>();
+        this.symptoms = new TreeMap<>();
 
         String line;
         while ((line = reader.readLine()) != null) {
-            if (this.mape.get(line) == null) {
-                this.mape.put(line, 1);
+            if (this.symptoms.get(line) == null) {
+                this.symptoms.put(line, 1);
             } else {
-                int occurence = this.mape.get(line);
+                int occurence = this.symptoms.get(line);
                 occurence++;
-                this.mape.put(line, occurence);
+                this.symptoms.put(line, occurence);
             }
         }
         reader.close();
-        System.out.println(this.mape);
+        System.out.println(this.symptoms);
     }
-    // Cree un getter pour utilise map dans une autre classe
+
+    // Created a getter and used the map in another class
     public TreeMap<String, Integer> getMyMap() {
-        return this.mape;
+        return this.symptoms;
     }
 }

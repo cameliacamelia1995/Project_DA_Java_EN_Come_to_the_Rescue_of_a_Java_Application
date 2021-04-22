@@ -3,11 +3,23 @@ package com.hemebiotech.analytics;
 import java.io.File;
 import java.util.TreeMap;
 
+/**
+ * @author camelia
+ * Analytics Counter is the main method class for lauching the program
+ */
 public class AnalyticsCounter {
-
-    // first get input
+    /**
+     * @param args
+     * @throws Exception
+     */
     public static void main(String args[]) throws Exception {
-        File file = new File("/Users/camelia95/IdeaProjects/Project_DA_Java_EN_Come_to_the_Rescue_of_a_Java_Application/Project02Eclipse/symptoms.txt");
+
+        // Step 1 : know how to open the txt file in java (symptoms.txt)
+        // Step 2 : browse the file (the method to get back every line)
+        // Step 3 : list the symptoms in alphabetical order and count them (TreeMap)
+        // Step 4 : write and exit the file result.out
+        PropertiesPaths propertiesPaths = new PropertiesPaths();
+        File file = new File(propertiesPaths.getProperty("input"));
         ReadSymptomDataFromFile symptomsFile = new ReadSymptomDataFromFile();
         symptomsFile.ReadSymptom(file);
 
