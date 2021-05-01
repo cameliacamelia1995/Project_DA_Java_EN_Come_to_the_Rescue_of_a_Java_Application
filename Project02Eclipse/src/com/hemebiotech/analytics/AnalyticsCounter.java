@@ -26,7 +26,6 @@ public class AnalyticsCounter {
     public static void main(String args[]) throws Exception {
 
         PropertiesPaths propertiesPaths = new PropertiesPaths();
-
         File file = new File(propertiesPaths.getProperty("input"));
         ReadSymptomDataFromFile symptomsFile = new ReadSymptomDataFromFile();
         symptomsFile.readSymptom(file);
