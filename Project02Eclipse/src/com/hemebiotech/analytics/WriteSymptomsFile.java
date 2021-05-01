@@ -16,7 +16,6 @@ public class WriteSymptomsFile {
 
     public WriteSymptomsFile() {
         this.propertiesPaths = new PropertiesPaths();
-
     }
     /**
      * @param symptoms
@@ -34,13 +33,13 @@ public class WriteSymptomsFile {
      *
      * And finally the stream is closed.
      */
-    public void Result(TreeMap<String, Integer> symptoms) {
-        // next generate output
+    public void result(TreeMap<String, Integer> symptoms) {
+
         BufferedWriter writer = null;
         try {
             writer = new BufferedWriter(new FileWriter(this.propertiesPaths.getProperty("output")));
-            for (Map.Entry<String, Integer> entree : symptoms.entrySet()) {
-                writer.write(entree.getKey() + ":" + entree.getValue());
+            for (Map.Entry<String, Integer> entry : symptoms.entrySet()) {
+                writer.write(entry.getKey() + ":" + entry.getValue());
                 writer.newLine();
             }
             writer.flush();

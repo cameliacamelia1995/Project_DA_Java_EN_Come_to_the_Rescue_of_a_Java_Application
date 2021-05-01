@@ -39,8 +39,8 @@ public class ReadSymptomDataFromFile {
      * At the end we create a getter that will be used in the main
      */
 
-    public void ReadSymptom(File file) throws Exception {
-        // First get input
+    public void readSymptom(File file) throws Exception {
+
         BufferedReader reader = new BufferedReader(new FileReader(file));
         this.symptoms = new TreeMap<>();
 
@@ -58,7 +58,6 @@ public class ReadSymptomDataFromFile {
         System.out.println(this.symptoms);
     }
 
-    // Created a getter and used the map in another class
     public TreeMap<String, Integer> getMyMap() {
         return this.symptoms;
     }
